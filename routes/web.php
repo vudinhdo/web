@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('contents.index');
 });
+
+Route::get("contact",[PageController::class,"ContactPage"])->name("contact");
+
+Route::get("shop",[PageController::class,"ShopPage"])->name("shop");
+
+Route::get("single",[ProductController::class,"SingleProduct"])->name("single");
