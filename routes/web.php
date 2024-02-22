@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/',[PageController::class,"IndexPage"])->name("/");
+Route::prefix("/")->group(function (){
+    Route::get("contact",[PageController::class,"ContactPage"])->name("contact");
+    Route::get("about",[PageController::class,"AboutPage"])->name("about");
+});
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix("Shop")->group(function (){
+
 });
